@@ -1,4 +1,4 @@
-##Historias de usuario a implementar.
+## Historias de usuario a implementar.
 
 Primer sprint:
 •	Como ejecutivo necesito saber que cajas están activas para evaluar la estrategia de atención.

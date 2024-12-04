@@ -1,3 +1,10 @@
+
+## Instalar dependencias
+```
+pip install -r dependencias.txt
+```
+
+
 ## Historias de usuario a implementar
 
 **Primer sprint:**

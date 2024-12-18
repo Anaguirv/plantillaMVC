@@ -16,7 +16,6 @@ class ConectorBD:
         self.__passwordb = passwordb
         self.__basedatosdb = basedatosdb
 
-        
     def activarConexion(self):
 
         try:
@@ -70,7 +69,8 @@ class ConectorBD:
             self.cursor.execute(sql)
             self.realizarCommit()
 
-            return 0
+            return 0, None # Devolver 0 y None en caso de éxito
+
         
         except Exception as e:
             self.realizarRollback()

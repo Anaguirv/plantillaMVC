@@ -16,6 +16,9 @@ class HomeController:
     def _bind(self):
         self.frame.register_btn.config(command=self.register)
         self.frame.list_btn.config(command=self.lists)
+        
+        self.frame.list_btn_cajas.config(command=self.listsCajas)
+
         self.frame.signout_btn.config(command=self.logout)
 
 
@@ -24,6 +27,9 @@ class HomeController:
         
     def lists(self):
         self.model.gestor_datos.recuperar_datos()
+
+    def listsCajas(self):
+        self.model.gestor_cajas.recuperar_datos()
 
     def logout(self):
         self.model.gestor_usuarios.logout()

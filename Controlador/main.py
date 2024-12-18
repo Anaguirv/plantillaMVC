@@ -7,6 +7,7 @@ Created on Sat Aug  3 23:02:35 2024
 
 from .home_menu import HomeController
 from .list_datos import ListController
+from .list_caja import ListControllerCajas
 from .signin_usuario import SignInController
 from .signup_usuario import SignUpController
 from .register_datos import RegisterController
@@ -21,6 +22,7 @@ class Controller:
         self.home_controller       = HomeController(model, view)
         self.register_controller   = RegisterController(model, view)
         self.list_controller       = ListController(model, view)
+        self.list_controller_cajas = ListControllerCajas(model, view)
         
 
         self.model.gestor_usuarios.add_event_listener(
@@ -34,6 +36,9 @@ class Controller:
                 
         self.model.gestor_datos.add_event_listener(
             "lista_datos", self.datos_list_listener)
+            
+        self.model.gestor_cajas.add_event_listener(
+            "lista_cajas", self.cajas_list_listener)
               
         self.model.gestor_datos.add_event_listener(
             "retorno_menu_registro", self.datos_retorno_register_listener)
@@ -52,6 +57,11 @@ class Controller:
     def datos_list_listener(self, data):
         self.list_controller.update_view()
         self.view.switch("list")
+
+
+    def cajas_list_listener(self, data):
+        self.list_controller_cajas.update_view()
+        self.view.switch("listCajas")
 
 
     def datos_retorno_register_listener(self, data):

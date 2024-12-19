@@ -12,7 +12,6 @@ class ListControllerCajas:
         self.view = view
         self.frame = self.view.frames["listCajas"]
         self._bind()
-        self.model.gestor_cajas.add_event_listener("lista_cajas", self.update_view)
 
     def _bind(self):
         self.frame.return_btn.config(command=self.retorno)
@@ -25,5 +24,9 @@ class ListControllerCajas:
         
     def update_view(self, lista_DTO):
         lista_DTO = self.model.gestor_cajas.desplegar_datos()
+        print("Controlador/list_caja")
         print("pide listar cajas activas")
+        print("===============================================")
+        print(lista_DTO)
+        print("===============================================")
         self.frame.listar_datos(lista_DTO)

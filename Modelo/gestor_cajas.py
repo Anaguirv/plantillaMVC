@@ -15,10 +15,15 @@ class Gestor_Cajas(ObservableModel):
         self.cajas_DAO = Cajas_DAO()
                         
     def recuperar_datos(self):
+        print("Recuperando datos...")
         self.trigger_event("lista_cajas")
 
     def desplegar_datos(self):
-        lista_DTO = self.cajas_DAO.leer_datos()        
+        lista_DTO = self.cajas_DAO.leer_datos()  
+        print("===____________________________________________________________________")
+        print("Modulo Modelo/gestor_cajas")
+        print(lista_DTO)
+        print("===____________________________________________________________________")      
         return lista_DTO
 
     def retornar(self):

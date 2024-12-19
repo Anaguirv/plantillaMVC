@@ -29,6 +29,7 @@ class HomeController:
         self.model.gestor_datos.recuperar_datos()
 
     def listsCajas(self):
+        print("controlador/home_menu.py -> pide recuperar datos")
         self.model.gestor_cajas.recuperar_datos()
 
     def logout(self):

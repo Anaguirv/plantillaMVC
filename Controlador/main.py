@@ -59,9 +59,14 @@ class Controller:
         self.view.switch("list")
 
 
+
     def cajas_list_listener(self, data):
-        self.list_controller_cajas.update_view()
+        print("Evento list_cajas recibido")
+        lista_DTO = self.model.gestor_cajas.desplegar_datos()
+
+        self.list_controller_cajas.update_view(lista_DTO)
         self.view.switch("listCajas")
+
 
 
     def datos_retorno_register_listener(self, data):

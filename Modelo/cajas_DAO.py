@@ -14,11 +14,23 @@ class Cajas_DAO:
     
     
     def leer_datos(self):
+        self.conector.activarConexion()
         sql = "SELECT * FROM caja"
-        result, error = self.conector.ejecutarSelectAll(sql)
-        if error:
-            print(f"Error al leer datos: {error}")
-            return None
-        else:
-            print("Datos leídos exitosamente.")
-            return result
+        estado, datos = self.conector.ejecutarSelectAll(sql)
+
+        listaCajas_DTO = {}
+
+        if estado == 0:
+
+            for i in range(0, len(datos)):
+                registro = {"id": datos[i][0], "nombre": datos[i][1], "estado": datos[i][2], "disponibilidad_pesos": datos[i][3]}
+                listaCajas_DTO[i]= registro
+
+        print("----------------------------------------------------------------------")
+        print(estado)
+        print(listaCajas_DTO)
+        print("----------------------------------------------------------------------")
+        self.conector.desactivarConexion()
+
+        print("Datos leídos exitosamente.")
+        return listaCajas_DTO

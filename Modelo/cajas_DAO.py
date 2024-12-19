@@ -15,7 +15,7 @@ class Cajas_DAO:
     
     def leer_datos(self):
         self.conector.activarConexion()
-        sql = "SELECT * FROM caja"
+        sql = "SELECT * FROM caja WHERE estado=1"
         estado, datos = self.conector.ejecutarSelectAll(sql)
 
         listaCajas_DTO = {}

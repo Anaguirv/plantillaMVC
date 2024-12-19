@@ -10,6 +10,7 @@ pip install -r dependencias.txt
 **Primer sprint:**
 
 - Como ejecutivo necesito saber que cajas están activas para evaluar la estrategia de atención.
+![Diagrama HU1](Diagramas/HU1_mostrarCajasDisponibles.drawio.png)
 
 
 **Segundo sprint:**

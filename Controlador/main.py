@@ -8,6 +8,7 @@ Created on Sat Aug  3 23:02:35 2024
 from .home_menu import HomeController
 from .list_datos import ListController
 from .list_caja import ListControllerCajas
+from .list_transacciones import ListControllerTransacciones
 from .signin_usuario import SignInController
 from .signup_usuario import SignUpController
 from .register_datos import RegisterController
@@ -23,6 +24,8 @@ class Controller:
         self.register_controller   = RegisterController(model, view)
         self.list_controller       = ListController(model, view)
         self.list_controller_cajas = ListControllerCajas(model, view)
+        self.list_controller_transacciones = ListControllerTransacciones(model, view)
+
         
 
         self.model.gestor_usuarios.add_event_listener(
@@ -42,6 +45,9 @@ class Controller:
               
         self.model.gestor_datos.add_event_listener(
             "retorno_menu_registro", self.datos_retorno_register_listener)
+
+        self.model.gestor_transacciones.add_event_listener(
+            "lista_transacciones", self.transacciones_list_listener)
         
 
     def autentificacion_signin_listener(self, data):
@@ -66,6 +72,13 @@ class Controller:
 
         self.list_controller_cajas.update_view(lista_DTO)
         self.view.switch("listCajas")
+
+ #-------------------------- Galindez estuvo por aca--------------------------
+    def transacciones_list_listener(self, data):
+        print("Evento list_transacciones recibida")
+        lista_DTO = self.model.gestor_transacciones.desplegar_datos()
+        self.list_controller_transacciones.update_view(lista_DTO)
+        self.view.switch("listTransacciones")
 
 
 

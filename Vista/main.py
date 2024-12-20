@@ -12,6 +12,8 @@ from .ventana_home import HomeView
 from .ventana_signin import SignInView
 from .ventana_signup import SignUpView
 from .ventana_register import RegisterView
+from .ventana_list_transacciones import ListViewTransacciones  
+
 
 class View:
     
@@ -25,6 +27,8 @@ class View:
         self._add_frame(RegisterView, "register")
         self._add_frame(ListView, "list")
         self._add_frame(ListViewCajas, "listCajas")
+        self._add_frame(ListViewTransacciones, "listTransacciones")
+
 
     def _add_frame(self, Frame, name):
         self.frames[name] = Frame(self.root)

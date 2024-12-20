@@ -13,6 +13,7 @@ pip install -r dependencias.txt
 ![Diagrama HU1](Diagramas/HU1_mostrarCajasDisponibles.drawio.png)
 
 
+
 **Segundo sprint:**
 
 - Como gerente necesito determinar las ganancias en pesos que ha reportado cada moneda tranzada para evaluar futuras inversiones.

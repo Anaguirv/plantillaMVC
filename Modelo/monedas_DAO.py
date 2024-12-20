@@ -1,40 +1,36 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Oct  8 10:20:31 2024
+import sqlite3
 
-@author: Carlos Luco Montofré
-"""
+class MonedasDAO:
+    def __init__(self, db_path):
+        self.db_path = db_path
 
+    def obtener_ganancias_por_moneda(self):
+        """
+        Consulta las ganancias por moneda en pesos.
+        """
+        try:
+            conexion = sqlite3.connect(self.db_path)
+            cursor = conexion.cursor()
 
-class Monedas_DAO:
+            consulta = """
+                SELECT moneda, SUM(ganancia * tasa_conversion) AS ganancias_pesos
+                FROM transacciones
+                GROUP BY moneda
+            """
 
-    def __init__(self, conectorBD) -> None:
+            cursor.execute(consulta)
+            resultados = cursor.fetchall()
 
-        self.conectorBD = conectorBD
+            conexion.close()
+            return resultados
 
+        except sqlite3.Error as e:
+            print(f"Error al conectar con la base de datos: {e}")
+            return []
 
-    def recuperar_listaMonedas(self):
-        estado = self.conectorBD.activarConexion()
-
-        if estado == 66:
-            del self.conectorBD
-            return estado, None
-        
-        sql = "select cod_moneda, nom_moneda, tipo_cambio from monedas"
-        estado, datos = self.conectorBD.ejecutarSelectAll(sql)
-
-        listaMonedas_DTO = {}
-
-        if estado == 0:
-
-            for i in range(0, len(datos)):
-                registro = {"codigo": datos[i][0], "nombre": datos[i][1], "tipo": datos[i][2]}
-                listaMonedas_DTO[i]= registro
-
-
-        self.conectorBD.desactivarConexion()
-
-        del self.conectorBD
-
-        return estado, listaMonedas_DTO
-
+# Ejemplo de uso
+if __name__ == "__main__":
+    dao = MonedasDAO("acme.db")
+    ganancias = dao.obtener_ganancias_por_moneda()
+    for moneda, ganancia in ganancias:
+        print(f"Moneda: {moneda}, Ganancia en pesos: {ganancia}")

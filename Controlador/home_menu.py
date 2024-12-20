@@ -18,6 +18,8 @@ class HomeController:
         self.frame.list_btn.config(command=self.lists)
         
         self.frame.list_btn_cajas.config(command=self.listsCajas)
+ # Nueva función para listar transacciones galindez estuvo por aca
+        self.frame.list_btn_transacciones.config(command=self.listsTransacciones)
 
         self.frame.signout_btn.config(command=self.logout)
 
@@ -31,6 +33,10 @@ class HomeController:
     def listsCajas(self):
         print("controlador/home_menu.py -> pide recuperar datos")
         self.model.gestor_cajas.recuperar_datos()
+
+    def listsTransacciones(self):
+        print("controlador/home_menu.py -> pide recuperar datos")
+        self.model.gestor_transacciones.recuperar_datos()
 
     def logout(self):
         self.model.gestor_usuarios.logout()

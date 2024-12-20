@@ -1,6 +1,6 @@
 from .conectorBD import ConectorBD
 
-class Moneda_DAO:
+class Transacciones_DAO:
     
     def __init__(self):
         # Configura la conexión a la base de datos
@@ -15,28 +15,29 @@ class Moneda_DAO:
         # Activar la conexión
         self.conector.activarConexion()
 
-        # Consulta para obtener todos los registros de moneda
-        sql = "SELECT id, nombre, simbolo FROM moneda"
+        # Consulta para obtener todos los registros de transacciones
+        sql = "SELECT id, cantidad, monto_total, moneda_id FROM transaccion"
         estado, datos = self.conector.ejecutarSelectAll(sql)
 
         # Inicializar el diccionario de datos
-        listaMonedas_DTO = {}
+        listaTransacciones_DTO = {}
 
         if estado == 0:
             for i in range(len(datos)):
                 registro = {
                     "id": datos[i][0], 
-                    "nombre": datos[i][1], 
-                    "simbolo": datos[i][2]
+                    "cantidad": datos[i][1], 
+                    "monto_total": datos[i][2], 
+                    "moneda_id": datos[i][3]
                 }
-                listaMonedas_DTO[i] = registro
+                listaTransacciones_DTO[i] = registro
 
         # Desactivar la conexión
         print("----------------------------------------------------------------------")
         print(estado)
-        print(listaMonedas_DTO)
+        print(listaTransacciones_DTO)
         print("----------------------------------------------------------------------")
         self.conector.desactivarConexion()
 
         print("Datos leídos exitosamente.")
-        return listaMonedas_DTO
+        return listaTransacciones_DTO

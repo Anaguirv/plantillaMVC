@@ -27,6 +27,16 @@ class ListViewCajas(Frame):
         
     def listar_datos(self, lista_DTO): 
         self.listaDatos.delete(0, END)
+        # Encabezados de la tabla
+        encabezado = f"{'ID':>5} {'Nombre':>15} {'Pesos disponibles':>25} {'Estado':>20}"
+        self.listaDatos.insert(0, encabezado)
+        self.listaDatos.insert(1, "-" * 65)
+        
         for i in range(0, len(lista_DTO)):
-            dato = lista_DTO[i]      
-            self.listaDatos.insert(i,f"{i}- {dato}")
+            dato = lista_DTO[i]
+            # Formatear los datos para que se muestren en columnas alineadas
+            estado = 'Activa' if dato['estado'] == 1 else 'No Activa'
+            formatted_dato = f"{dato['id']:>5} {dato['nombre']:>15} {'$' + str(dato['disponibilidad_pesos']):>20} {estado:>38}"
+            self.listaDatos.insert(i + 2, formatted_dato)
+
+

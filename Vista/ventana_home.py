@@ -28,8 +28,9 @@ class HomeView(Frame):
 
         self.list_btn_cajas = Button(self, text="Ver cajas activas")
         self.list_btn_cajas.grid(row=4, column=0, padx=10, pady=10)
-        
 
+        self.list_btn_ganancias = Button(self, text="Ver ganancias por moneda")
+        self.list_btn_ganancias.grid(row=5, column=0, padx=10, pady=10)
 
         self.signout_btn = Button(self, text="Salir")
-        self.signout_btn.grid(row=5, column=0, padx=10, pady=10)
+        self.signout_btn.grid(row=6, column=0, padx=10, pady=10)

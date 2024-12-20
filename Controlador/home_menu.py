@@ -21,6 +21,8 @@ class HomeController:
 
         self.frame.signout_btn.config(command=self.logout)
 
+        # Nueva opción para ganancias por moneda
+        self.frame.list_btn_ganancias.config(command=self.listsGanancias)
 
     def register(self):
         self.view.switch("register")
@@ -32,6 +34,13 @@ class HomeController:
         print("controlador/home_menu.py -> pide recuperar datos")
         self.model.gestor_cajas.recuperar_datos()
 
+    def listsGanancias(self):
+        from Vista.ventana_list_ganancias import VentanaGanancias
+        import tkinter as tk
+
+        root = tk.Toplevel()
+        VentanaGanancias(root, "acme.db")
+
     def logout(self):
         self.model.gestor_usuarios.logout()
 
@@ -42,5 +51,3 @@ class HomeController:
         else:
             username = 'Set-up sistema'
         self.frame.greeting.config(text=f"Bienvenido, {username}!")
-
-            

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 18-12-2024 a las 20:00:37
+-- Tiempo de generación: 20-12-2024 a las 01:37:46
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -34,15 +34,16 @@ CREATE TABLE IF NOT EXISTS `caja` (
   `estado` int DEFAULT NULL,
   `disponibilidad_pesos` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `caja`
 --
 
 INSERT INTO `caja` (`id`, `nombre`, `estado`, `disponibilidad_pesos`) VALUES
-(3, 'Aeropuerto', 0, 75000),
-(4, 'puerto', 1, 35000);
+(3, 'Caja C', 0, 75000),
+(4, 'Caja D', 1, 35000),
+(5, 'Caja F', 1, 45000);
 
 -- --------------------------------------------------------
 
@@ -70,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `username` varchar(50) COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
   `password` varchar(100) COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -78,7 +79,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 
 INSERT INTO `usuario` (`id`, `username`, `password`) VALUES
 (2, 'arn', '123'),
-(3, 'anaguirv', '123');
+(3, 'anaguirv', '123'),
+(4, '1', '1');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

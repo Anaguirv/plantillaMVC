@@ -1,40 +1,42 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Oct  8 10:20:31 2024
+from .conectorBD import ConectorBD
 
-@author: Carlos Luco Montofré
-"""
+class Moneda_DAO:
+    
+    def __init__(self):
+        # Configura la conexión a la base de datos
+        self.conector = ConectorBD(
+            hostdb='localhost',
+            userdb='root',       
+            passwordb='',       
+            basedatosdb='acme'
+        )
+    
+    def leer_datos(self):
+        # Activar la conexión
+        self.conector.activarConexion()
 
+        # Consulta para obtener todos los registros de moneda
+        sql = "SELECT id, nombre, simbolo FROM moneda"
+        estado, datos = self.conector.ejecutarSelectAll(sql)
 
-class Monedas_DAO:
-
-    def __init__(self, conectorBD) -> None:
-
-        self.conectorBD = conectorBD
-
-
-    def recuperar_listaMonedas(self):
-        estado = self.conectorBD.activarConexion()
-
-        if estado == 66:
-            del self.conectorBD
-            return estado, None
-        
-        sql = "select cod_moneda, nom_moneda, tipo_cambio from monedas"
-        estado, datos = self.conectorBD.ejecutarSelectAll(sql)
-
+        # Inicializar el diccionario de datos
         listaMonedas_DTO = {}
 
         if estado == 0:
+            for i in range(len(datos)):
+                registro = {
+                    "id": datos[i][0], 
+                    "nombre": datos[i][1], 
+                    "simbolo": datos[i][2]
+                }
+                listaMonedas_DTO[i] = registro
 
-            for i in range(0, len(datos)):
-                registro = {"codigo": datos[i][0], "nombre": datos[i][1], "tipo": datos[i][2]}
-                listaMonedas_DTO[i]= registro
+        # Desactivar la conexión
+        print("----------------------------------------------------------------------")
+        print(estado)
+        print(listaMonedas_DTO)
+        print("----------------------------------------------------------------------")
+        self.conector.desactivarConexion()
 
-
-        self.conectorBD.desactivarConexion()
-
-        del self.conectorBD
-
-        return estado, listaMonedas_DTO
-
+        print("Datos leídos exitosamente.")
+        return listaMonedas_DTO

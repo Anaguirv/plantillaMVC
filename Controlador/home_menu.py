@@ -21,6 +21,8 @@ class HomeController:
  # Nueva función para listar transacciones galindez estuvo por aca
         self.frame.list_btn_transacciones.config(command=self.listsTransacciones)
 
+        self.frame.list_btn_registrarTasaConversion.config(command=self.registerTasaConversion)
+
         self.frame.signout_btn.config(command=self.logout)
 
 
@@ -37,6 +39,10 @@ class HomeController:
     def listsTransacciones(self):
         print("controlador/home_menu.py -> pide recuperar datos")
         self.model.gestor_transacciones.recuperar_datos()
+
+    def registerTasaConversion(self):
+        print("controlador/home_menu.py -> pide registrar tasa de conversion")
+        self.view.switch("registerTasaConversion")
 
     def logout(self):
         self.model.gestor_usuarios.logout()

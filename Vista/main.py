@@ -13,6 +13,7 @@ from .ventana_signin import SignInView
 from .ventana_signup import SignUpView
 from .ventana_register import RegisterView
 from .ventana_list_transacciones import ListViewTransacciones  
+from .ventana_tasa_conversion import RegisterViewTasaConversion
 
 
 class View:
@@ -28,6 +29,7 @@ class View:
         self._add_frame(ListView, "list")
         self._add_frame(ListViewCajas, "listCajas")
         self._add_frame(ListViewTransacciones, "listTransacciones")
+        self._add_frame(RegisterViewTasaConversion, "registerTasaConversion")
 
 
     def _add_frame(self, Frame, name):

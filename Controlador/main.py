@@ -12,6 +12,7 @@ from .list_transacciones import ListControllerTransacciones
 from .signin_usuario import SignInController
 from .signup_usuario import SignUpController
 from .register_datos import RegisterController
+from .register_tasa_conversion import RegisterControllerTasaConversion
 
 class Controller:
     
@@ -25,6 +26,7 @@ class Controller:
         self.list_controller       = ListController(model, view)
         self.list_controller_cajas = ListControllerCajas(model, view)
         self.list_controller_transacciones = ListControllerTransacciones(model, view)
+        self.register_controller_tasa_conversion = RegisterControllerTasaConversion(model, view)
 
         
 
@@ -49,6 +51,10 @@ class Controller:
         self.model.gestor_transacciones.add_event_listener(
             "lista_transacciones", self.transacciones_list_listener)
         
+        self.model.gestor_tasa_conversion.add_event_listener(
+            "registro_tasa_conversion", self.tasa_conversion_register_listener)
+        
+        
 
     def autentificacion_signin_listener(self, data):
         self.home_controller.update_view()
@@ -72,6 +78,11 @@ class Controller:
 
         self.list_controller_cajas.update_view(lista_DTO)
         self.view.switch("listCajas")
+
+
+    def tasa_conversion_register_listener(self, data):
+        print("Controlador/main.py -> pide regitrar tasa de cambio")
+        self.view.switch("registerTasaConversion")
 
  #-------------------------- Galindez estuvo por aca--------------------------
     def transacciones_list_listener(self, data):

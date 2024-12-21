@@ -9,6 +9,7 @@ from .gestor_usuarios import Gestor_Usuarios
 from .gestor_datos import Gestor_Datos
 from .gestor_cajas import Gestor_Cajas
 from .gestor_transacciones import Gestor_Transacciones
+from .gestor_tasa_conversion import Gestor_Tasa_Conversion
 
 
 class Model:
@@ -17,3 +18,4 @@ class Model:
         self.gestor_datos = Gestor_Datos()
         self.gestor_cajas = Gestor_Cajas()
         self.gestor_transacciones = Gestor_Transacciones()
+        self.gestor_tasa_conversion = Gestor_Tasa_Conversion()

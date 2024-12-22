@@ -47,4 +47,4 @@ class RegisterViewTasaConversion(Frame):
             return data_dto
         except ValueError:
             # Si ocurre un error, muestra el mensaje de error
-            self.greeting.config(text="Error: El dato ingresado no es un número.", fg="red")
+            self.greeting.config(text="Error: El dato ingresado no es un número entero.", fg="red")

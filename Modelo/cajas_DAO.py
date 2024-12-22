@@ -34,3 +34,32 @@ class Cajas_DAO:
 
         print("Datos leídos exitosamente.")
         return listaCajas_DTO
+    
+    def editar_datos(self, id_caja, nuevo_monto):
+        """
+        Inserta o actualiza el monto disponible de una caja.
+
+        :param id_caja: ID de la caja.
+        :param nuevo_monto: Monto disponible.
+        :return: True si la operación fue exitosa, False en caso contrario.
+        """
+        self.conector.activarConexion()
+        sql = f"UPDATE caja SET disponibilidad_pesos = {nuevo_monto} WHERE id = {id_caja}"
+
+        # Cambiar a recibir un solo valor
+        estado = self.conector.ejecutarUpdate(sql)
+        self.conector.desactivarConexion()
+
+        if estado == 0:
+            print(f"Datos de la caja con ID {id_caja} actualizados correctamente.")
+            return True
+        else:
+            print(f"Error al actualizar los datos de la caja con ID {id_caja}.")
+            return False
+
+
+
+    
+
+
+    

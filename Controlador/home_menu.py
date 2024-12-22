@@ -28,6 +28,10 @@ class HomeController:
 
         
 
+        self.frame.register_btn_registrarDisponibilidadCajas.config(command=self.registerDisponibilidadCajas)
+
+        
+
         self.frame.register_btn_registrarTasaConversion.config(command=self.registerTasaConversion)
 
         self.frame.signout_btn.config(command=self.logout)

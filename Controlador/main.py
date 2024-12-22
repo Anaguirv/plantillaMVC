@@ -60,9 +60,12 @@ class Controller:
         self.model.gestor_disponibilidad_cajas.add_event_listener(
             "registro_disponibilidad", self.cajas_list_listener)
         
+<<<<<<< HEAD
         self.model.gestor_monedas.add_event_listener(
             "registro_disponibilidad", self.disponibilidad_monedas_register_listener)
 
+=======
+>>>>>>> 42a8373a5b3ca0f5f69deac7d2c960f5b2d41aa9
         
 
     def autentificacion_signin_listener(self, data):
@@ -103,6 +106,10 @@ class Controller:
     def disponibilidad_cajas_register_listener(self, data):
         print("Controlador/main.py register_disponibilidad_cajas recibido")
         self.view.switch("registerDisponibilidadCajas")
+<<<<<<< HEAD
+=======
+
+>>>>>>> 42a8373a5b3ca0f5f69deac7d2c960f5b2d41aa9
 
     def disponibilidad_monedas_register_listener(self, data):
         print("Controlador/main.py register_disponibilidad_monedas recibido")

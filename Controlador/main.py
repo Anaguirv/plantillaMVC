@@ -14,6 +14,7 @@ from .signup_usuario import SignUpController
 from .register_datos import RegisterController
 from .register_tasa_conversion import RegisterControllerTasaConversion
 from .register_disponibilidad_cajas import RegisterControllerDisponibilidad
+from .register_disponibilidad_moneda import RegisterControllerCantidad
 class Controller:
     
     def __init__(self, model, view):
@@ -28,6 +29,7 @@ class Controller:
         self.list_controller_transacciones = ListControllerTransacciones(model, view)
         self.register_controller_tasa_conversion = RegisterControllerTasaConversion(model, view)
         self.register_controller_disponibilidad_cajas = RegisterControllerDisponibilidad(model, view)
+        self.register_controller_cantidad = RegisterControllerCantidad(model, view)
 
         
 
@@ -58,6 +60,9 @@ class Controller:
         self.model.gestor_disponibilidad_cajas.add_event_listener(
             "registro_disponibilidad", self.cajas_list_listener)
         
+        self.model.gestor_monedas.add_event_listener(
+            "registro_disponibilidad", self.disponibilidad_monedas_register_listener)
+
         
 
     def autentificacion_signin_listener(self, data):
@@ -99,7 +104,10 @@ class Controller:
         print("Controlador/main.py register_disponibilidad_cajas recibido")
         self.view.switch("registerDisponibilidadCajas")
 
-
+    def disponibilidad_monedas_register_listener(self, data):
+        print("Controlador/main.py register_disponibilidad_monedas recibido")
+        self.view.switch("registerCantidad")
+ #-------------------------- Galindez estuvo por aca--------------------------
 
     def datos_retorno_register_listener(self, data):
         self.view.switch("home")

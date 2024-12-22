@@ -24,7 +24,7 @@ class RegisterViewTasaConversion(Frame):
         self.dato_input.grid(row=1, column=1, padx=(0, 20), sticky="ew")
 
         self.greeting = Label(self, text="")
-        self.greeting.grid(row=2, column=0, padx=10, pady=10, sticky="ew")
+        self.greeting.grid(row=2, column=1, padx=10, pady=10, sticky="ew")
 
         self.register_btn = Button(self, text="Registro de datos")
         self.register_btn.grid(row=3, column=1, padx=10, pady=10, sticky="w")
@@ -35,6 +35,16 @@ class RegisterViewTasaConversion(Frame):
         
     def data_register(self):
         dato = self.dato_input.get()
-        data_dto = {"dato": dato}
-        self.dato_input.delete(0, last=len(dato))
-        return data_dto
+        try:
+            # Intenta convertir el dato a entero
+            dato_int = int(dato)
+            
+            # Si tiene éxito, limpia el mensaje de error y retorna el dato
+            self.greeting.config(text="")
+            data_dto = {"dato": dato_int}
+            self.dato_input.delete(0, last=len(dato))
+            self.greeting.config(text=f"Tasa de cambio '{dato_int}' ingresada correctamente.", fg="green")
+            return data_dto
+        except ValueError:
+            # Si ocurre un error, muestra el mensaje de error
+            self.greeting.config(text="Error: El dato ingresado no es un número.", fg="red")

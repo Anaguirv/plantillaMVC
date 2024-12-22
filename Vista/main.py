@@ -15,6 +15,7 @@ from .ventana_register import RegisterView
 from .ventana_list_transacciones import ListViewTransacciones  
 from .ventana_tasa_conversion import RegisterViewTasaConversion
 from .ventana_registrar_disponibilidad_cajas import RegisterViewDisponibilidad
+from .ventana_registrar_disponibilidad_moneda import RegisterViewCantidad
 
 class View:
     
@@ -31,6 +32,7 @@ class View:
         self._add_frame(ListViewTransacciones, "listTransacciones")
         self._add_frame(RegisterViewTasaConversion, "registerTasaConversion")
         self._add_frame(RegisterViewDisponibilidad, "registerDisponibilidad")
+        self._add_frame(RegisterViewCantidad, "registerCantidad")
 
 
     def _add_frame(self, Frame, name):

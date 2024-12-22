@@ -40,3 +40,24 @@ class Moneda_DAO:
 
         print("Datos leídos exitosamente.")
         return listaMonedas_DTO
+
+    def editar_cantidad(self, id_moneda, nueva_cantidad):
+        """
+        Actualiza la cantidad de una moneda específica en la base de datos.
+
+        :param id_moneda: ID de la moneda.
+        :param nueva_cantidad: Nueva cantidad disponible.
+        :return: True si la operación fue exitosa, False en caso contrario.
+        """
+        self.conector.activarConexion()
+        sql = f"UPDATE moneda SET cantidad = {nueva_cantidad} WHERE id = {id_moneda}"
+
+        estado = self.conector.ejecutarUpdate(sql)
+        self.conector.desactivarConexion()
+
+        if estado == 0:
+            print(f"Cantidad de la moneda con ID {id_moneda} actualizada a {nueva_cantidad}.")
+            return True
+        else:
+            print(f"Error al actualizar la cantidad de la moneda con ID {id_moneda}.")
+            return False

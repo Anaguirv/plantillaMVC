@@ -11,6 +11,7 @@ from .gestor_cajas import Gestor_Cajas
 from .gestor_transacciones import Gestor_Transacciones
 from .gestor_tasa_conversion import Gestor_Tasa_Conversion
 from .gestor_registrar_disponibilidad_cajas import Gestor_Disponibilidad_Cajas
+from .gestor_registrar_disponibilidad_moneda import Gestor_Monedas
 
 
 class Model:
@@ -21,3 +22,4 @@ class Model:
         self.gestor_transacciones = Gestor_Transacciones()
         self.gestor_tasa_conversion = Gestor_Tasa_Conversion()
         self.gestor_disponibilidad_cajas = Gestor_Disponibilidad_Cajas()
+        self.gestor_monedas = Gestor_Monedas()

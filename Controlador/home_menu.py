@@ -20,8 +20,13 @@ class HomeController:
         
         self.frame.list_btn_cajas.config(command=self.listsCajas)
 
-         # Nueva función para listar transacciones galindez estuvo por aca
+        # Nueva función para listar transacciones galindez estuvo por aca
         self.frame.list_btn_transacciones.config(command=self.listsTransacciones)
+        self.frame.register_btn_registrarDisponibilidadCajas.config(command=self.registerDisponibilidadCajas)
+        self.frame.register_btn_registrarDisponibilidadMonedas.config(command=self.registerDisponibilidadMoneda)
+
+
+        
 
         self.frame.register_btn_registrarDisponibilidadCajas.config(command=self.registerDisponibilidadCajas)
 
@@ -54,6 +59,8 @@ class HomeController:
         print("controlador/home_menu.py -> pide abrir ventana para registrar disponibilidad de cajas")
         self.view.switch("registerDisponibilidad")
 
+    def registerDisponibilidadMoneda(self):
+        self.view.switch("registerCantidad")
 
     def logout(self):
         self.model.gestor_usuarios.logout()

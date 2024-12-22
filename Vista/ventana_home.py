@@ -38,6 +38,9 @@ class HomeView(Frame):
         self.register_btn_registrarDisponibilidadCajas = Button(self, text="HU7 - Registrar disponibilidad de pesos cajas.")
         self.register_btn_registrarDisponibilidadCajas.grid(row=7, column=0, padx=10, pady=10)
 
+        self.register_btn_registrarDisponibilidadMonedas = Button(self, text="HU8 - Registrar Compra Moneda Extranjera.")
+        self.register_btn_registrarDisponibilidadMonedas.grid(row=8, column=0, padx=10, pady=10)
+
     
         self.signout_btn = Button(self, text="Salir")
-        self.signout_btn.grid(row=8, column=0, padx=10, pady=10)
+        self.signout_btn.grid(row=9, column=0, padx=10, pady=10)

@@ -32,8 +32,8 @@ class HomeView(Frame):
         self.list_btn_transacciones = Button(self, text="HU4 - Moneda Más Vendida")
         self.list_btn_transacciones.grid(row=5, column=0, padx=10, pady=10)
 
-        self.list_btn_registrarTasaConversion = Button(self, text="HU6 - Registrar tipo de cambio")
-        self.list_btn_registrarTasaConversion.grid(row=6, column=0, padx=10, pady=10)
+        self.register_btn_registrarTasaConversion = Button(self, text="HU6 - Registrar tipo de cambio")
+        self.register_btn_registrarTasaConversion.grid(row=6, column=0, padx=10, pady=10)
 
 
     

@@ -21,13 +21,12 @@ class Tasa_Conversion_DAO:
 
     def grabar_datos(self, data_DTO):
         dato     = data_DTO['dato']
+        print("modelo/tasa_conversion -> Datos preparados para ser insertados en tabla 'tasa_conversion'= ", dato)
 
         # Crear en la base de datos
         self.conector.activarConexion()
         sql = f"INSERT INTO tasa_conversion (tipo_cambio) VALUES ('{dato}')"
         result, error = self.conector.ejecutarInsert(sql)
-        print("modelo/tasa_conversion -> Result", result)
-        print("modelo/tasa_conversion -> error", error)
         self.conector.desactivarConexion()
 
         if result == 0:

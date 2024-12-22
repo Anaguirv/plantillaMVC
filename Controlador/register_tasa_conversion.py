@@ -18,7 +18,7 @@ class RegisterControllerTasaConversion:
         self.frame.return_btn.config(command=self.retorno)
 
     def registro(self):
-        print("Controlador/register_tasa_conversion -> Pide registrar")
+        print("Controlador/register_tasa_conversion -> Pide registrar tasa de cambio")
         data = self.frame.data_register()
         self.model.gestor_tasa_conversion.registrar(data)
 

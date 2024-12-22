@@ -15,13 +15,15 @@ class HomeController:
 
     def _bind(self):
         self.frame.register_btn.config(command=self.register)
+        
         self.frame.list_btn.config(command=self.lists)
         
         self.frame.list_btn_cajas.config(command=self.listsCajas)
- # Nueva función para listar transacciones galindez estuvo por aca
+
+         # Nueva función para listar transacciones galindez estuvo por aca
         self.frame.list_btn_transacciones.config(command=self.listsTransacciones)
 
-        self.frame.list_btn_registrarTasaConversion.config(command=self.registerTasaConversion)
+        self.frame.register_btn_registrarTasaConversion.config(command=self.registerTasaConversion)
 
         self.frame.signout_btn.config(command=self.logout)
 
@@ -41,7 +43,7 @@ class HomeController:
         self.model.gestor_transacciones.recuperar_datos()
 
     def registerTasaConversion(self):
-        print("controlador/home_menu.py -> pide registrar tasa de conversion")
+        print("controlador/home_menu.py -> pide abrir ventana para ingreso de tasa de conversion")
         self.view.switch("registerTasaConversion")
 
     def logout(self):

@@ -21,21 +21,41 @@ class Usuario_DAO:
             basedatosdb='acme'
         )
 
-    def busca_user(self, data_DTO):
-        user = data_DTO['username']
-        password = data_DTO['password']
+    def busca_user(self, datos_DTO):
+        """
+        Busca al usuario por su nombre de usuario en la base de datos.
+        :param datos_DTO: Diccionario con 'username' y 'password'.
+        :return: Diccionario con datos del usuario si existe, None si no existe.
+        """
+        username = datos_DTO["username"]
 
-        # Buscar usuario en la lista local
-        if user in self.lista_usuarios and self.lista_usuarios[user] == password:
-            return True
+        try:
+            # Activa la conexión
+            self.conector.activarConexion()
 
-        # Buscar usuario en la base de datos
-        self.conector.activarConexion()
-        sql = f"SELECT * FROM usuario WHERE username = '{user}' AND password = '{password}'"
-        result, datos = self.conector.ejecutarSelectOne(sql)
-        self.conector.desactivarConexion()
+            # Ejecuta la consulta
+            query = "SELECT username, password, rol FROM usuario WHERE username = %s"
+            cursor = self.conector.conexion.cursor()  # Usa el cursor del conector
+            cursor.execute(query, (username,))
+            resultado = cursor.fetchone()
 
-        return result == 0 and datos is not None
+            # Cierra la conexión
+            self.conector.desactivarConexion()
+
+            # Procesa el resultado
+            if resultado:
+                return {
+                    "username": resultado[0],
+                    "password": resultado[1],  # Contraseña (podría estar cifrada)
+                    "rol": resultado[2]
+                }
+            else:
+                return None
+        except Exception as e:
+            # Maneja errores en la conexión o consulta
+            print(f"Error al buscar usuario: {e}")
+            self.conector.desactivarConexion()
+            return None
 
     def crea_user(self, data_DTO):
         user = data_DTO['username']

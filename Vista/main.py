@@ -16,7 +16,9 @@ from .ventana_list_transacciones import ListViewTransacciones
 from .ventana_tasa_conversion import RegisterViewTasaConversion
 from .ventana_registrar_disponibilidad_cajas import RegisterViewDisponibilidad
 from .ventana_registrar_disponibilidad_moneda import RegisterViewCantidad
-from .ventana_list_ganancias import ListViewGanancias  # Importar la vista de ganancias
+from .ventana_list_ganancias import ListViewGanancias
+from .ventana_menu_gerente import MenuGerenteView
+# Importar la vista de ganancias
 
 class View:
     
@@ -31,6 +33,7 @@ class View:
         self._add_frame(RegisterView, "register")
         self._add_frame(ListView, "list")
         self._add_frame(ListViewCajas, "listCajas")
+        self._add_frame(MenuGerenteView, "menu_gerente")
         self._add_frame(ListViewTransacciones, "listTransacciones")
         self._add_frame(RegisterViewTasaConversion, "registerTasaConversion")
         self._add_frame(RegisterViewDisponibilidad, "registerDisponibilidad")
@@ -50,3 +53,4 @@ class View:
         
     def stop_mainloop(self):
         self.root.destroy()
+        

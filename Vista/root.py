@@ -14,7 +14,7 @@ class Root(Tk):
 
         start_width  = 500
         min_width    = 400
-        start_height = 400
+        start_height = 550
         min_height   = 250
 
         self.geometry(f"{start_width}x{start_height}")

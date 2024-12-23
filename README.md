@@ -31,6 +31,8 @@ HU5 - Como gerente necesito validar credenciales para acceder a funcionalidades 
 **Tercer sprint:**
 
 HU6 - Como ejecutivo necesito registrar tipos de cambios para iniciar la operación del día.
+![Diagrama HU4](Diagramas/HU6_IngresarTipoCambio.png)
+
 
 HU7 - Como cajero necesito registrar la disponibilidad de pesos para iniciar el trabajo diario de la caja.
 

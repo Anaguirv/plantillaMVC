@@ -21,6 +21,8 @@ class HomeController:
         self.frame.register_btn_registrarDisponibilidadMonedas.config(command=self.registerDisponibilidadMoneda)
         self.frame.register_btn_registrarTasaConversion.config(command=self.registerTasaConversion)
         self.frame.signout_btn.config(command=self.logout)
+        self.frame.list_btn_pesosDisponibles.config(command=self.listPesosDisponibles)
+
 
     def register(self):
         self.view.switch("register")
@@ -31,6 +33,10 @@ class HomeController:
     def listsCajas(self):
         print("controlador/home_menu.py -> pide recuperar datos")
         self.model.gestor_cajas.recuperar_datos()
+
+    def listPesosDisponibles(self):
+        print("controlador/home_menu.py -> pide recuperar datos")
+        self.model.gestor_pesos_disponibles.recuperar_datos()
 
     def listsGanancias(self):
         """

@@ -36,17 +36,20 @@ class HomeView(Frame):
         self.list_btn_ganancias = Button(self, text="HU2 - Ganancias por Moneda")  # Botón de HU2
         self.list_btn_ganancias.grid(row=5, column=0, padx=10, pady=5)
 
+        self.list_btn_pesosDisponibles = Button(self, text="HU3 - Disponibilidad de pesos")
+        self.list_btn_pesosDisponibles.grid(row=6, column=0, padx=10, pady=5)
+
         self.list_btn_transacciones = Button(self, text="HU4 - Moneda Más Vendida")
-        self.list_btn_transacciones.grid(row=6, column=0, padx=10, pady=5)
+        self.list_btn_transacciones.grid(row=7, column=0, padx=10, pady=5)
 
         self.register_btn_registrarTasaConversion = Button(self, text="HU6 - Registrar tipo de cambio")
-        self.register_btn_registrarTasaConversion.grid(row=7, column=0, padx=10, pady=5)
+        self.register_btn_registrarTasaConversion.grid(row=8, column=0, padx=10, pady=5)
 
         self.register_btn_registrarDisponibilidadCajas = Button(self, text="HU7 - Registrar disponibilidad de pesos cajas.")
-        self.register_btn_registrarDisponibilidadCajas.grid(row=8, column=0, padx=10, pady=5)
+        self.register_btn_registrarDisponibilidadCajas.grid(row=9, column=0, padx=10, pady=5)
 
         self.register_btn_registrarDisponibilidadMonedas = Button(self, text="HU8 - Registrar Compra Moneda Extranjera.")
-        self.register_btn_registrarDisponibilidadMonedas.grid(row=9, column=0, padx=10, pady=5)
+        self.register_btn_registrarDisponibilidadMonedas.grid(row=10, column=0, padx=10, pady=5)
 
         self.signout_btn = Button(self, text="Salir", bg="red", fg="white")
-        self.signout_btn.grid(row=10, column=0, padx=10, pady=10, sticky="ew")
+        self.signout_btn.grid(row=11, column=0, padx=10, pady=10, sticky="ew")

@@ -9,6 +9,7 @@ from .register_tasa_conversion import RegisterControllerTasaConversion
 from .register_disponibilidad_cajas import RegisterControllerDisponibilidad
 from .register_disponibilidad_moneda import RegisterControllerCantidad
 from .list_ganancias import ListControllerGanancias
+from .list_pesos_disponibles import ListControllerPesosDisponibles
 
 class Controller:
     def __init__(self, model, view):
@@ -27,6 +28,9 @@ class Controller:
         self.register_controller_disponibilidad_cajas = RegisterControllerDisponibilidad(model, view)
         self.register_controller_cantidad = RegisterControllerCantidad(model, view)
         self.list_controller_ganancias = ListControllerGanancias(model, view)
+        self.list_controller_pesos_disponibles = ListControllerPesosDisponibles(model, view)
+
+        
 
         # Configurar los event listeners
         self.setup_event_listeners()
@@ -50,6 +54,9 @@ class Controller:
         )
         self.model.gestor_cajas.add_event_listener(
             "lista_cajas", self.cajas_list_listener
+        )
+        self.model.gestor_pesos_disponibles.add_event_listener(
+            "lista_pesosDisponibles", self.pesosDisponibles_list_listener
         )
         self.model.gestor_transacciones.add_event_listener(
             "lista_transacciones", self.transacciones_list_listener
@@ -99,6 +106,13 @@ class Controller:
         lista_DTO = self.model.gestor_cajas.desplegar_datos()
         self.list_controller_cajas.update_view(lista_DTO)
         self.view.switch("listCajas")
+
+    def pesosDisponibles_list_listener(self, data):
+        """Maneja el evento de listar Pesos."""
+        print("Evento 'lista_pesosDisponibles' recibido.")
+        lista_DTO = self.model.gestor_pesos_disponibles.desplegar_datos()
+        self.list_controller_pesos_disponibles.update_view(lista_DTO)
+        self.view.switch("listPesosDisponibles")
 
     def tasa_conversion_register_listener(self, data):
         """Maneja el evento de registro de tasa de conversión."""

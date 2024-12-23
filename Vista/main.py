@@ -19,6 +19,7 @@ from .ventana_registrar_disponibilidad_moneda import RegisterViewCantidad
 from .ventana_list_ganancias import ListViewGanancias
 from .ventana_menu_gerente import MenuGerenteView
 # Importar la vista de ganancias
+from .ventana_list_pesos_disponibles import ListViewPesosDisponibles
 
 class View:
     
@@ -39,6 +40,8 @@ class View:
         self._add_frame(RegisterViewDisponibilidad, "registerDisponibilidad")
         self._add_frame(RegisterViewCantidad, "registerCantidad")
         self._add_frame(ListViewGanancias, "listGanancias", self.controller)  # Agregar vista de ganancias
+        self._add_frame(ListViewPesosDisponibles, "listPesosDisponibles")
+
 
     def _add_frame(self, Frame, name, *args):
         self.frames[name] = Frame(self.root, *args)  # Pasar argumentos adicionales

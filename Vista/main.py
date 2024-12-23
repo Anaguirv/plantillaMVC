@@ -12,16 +12,18 @@ from .ventana_home import HomeView
 from .ventana_signin import SignInView
 from .ventana_signup import SignUpView
 from .ventana_register import RegisterView
-from .ventana_list_transacciones import ListViewTransacciones  
+from .ventana_list_transacciones import ListViewTransacciones
 from .ventana_tasa_conversion import RegisterViewTasaConversion
 from .ventana_registrar_disponibilidad_cajas import RegisterViewDisponibilidad
 from .ventana_registrar_disponibilidad_moneda import RegisterViewCantidad
+from .ventana_list_ganancias import ListViewGanancias  # Importar la vista de ganancias
 
 class View:
     
-    def __init__(self):
+    def __init__(self, controller):
         self.root = Root()
         self.frames = {}
+        self.controller = controller  # Pasar el controlador principal
 
         self._add_frame(SignUpView, "signup")
         self._add_frame(SignInView, "signin")
@@ -33,10 +35,10 @@ class View:
         self._add_frame(RegisterViewTasaConversion, "registerTasaConversion")
         self._add_frame(RegisterViewDisponibilidad, "registerDisponibilidad")
         self._add_frame(RegisterViewCantidad, "registerCantidad")
+        self._add_frame(ListViewGanancias, "listGanancias", self.controller)  # Agregar vista de ganancias
 
-
-    def _add_frame(self, Frame, name):
-        self.frames[name] = Frame(self.root)
+    def _add_frame(self, Frame, name, *args):
+        self.frames[name] = Frame(self.root, *args)  # Pasar argumentos adicionales
         self.frames[name].grid(row=0, column=0, sticky="nsew")
 
     def switch(self, name):
@@ -47,4 +49,4 @@ class View:
         self.root.mainloop()
         
     def stop_mainloop(self):
-         self.root.destroy()
+        self.root.destroy()

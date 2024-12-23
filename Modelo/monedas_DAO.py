@@ -12,7 +12,9 @@ class Moneda_DAO:
         )
     
     def leer_datos(self):
-        # Activar la conexión
+        """
+        Obtiene todos los registros de monedas desde la base de datos.
+        """
         self.conector.activarConexion()
 
         # Consulta para obtener todos los registros de moneda
@@ -31,33 +33,35 @@ class Moneda_DAO:
                 }
                 listaMonedas_DTO[i] = registro
 
-        # Desactivar la conexión
-        print("----------------------------------------------------------------------")
-        print(estado)
-        print(listaMonedas_DTO)
-        print("----------------------------------------------------------------------")
         self.conector.desactivarConexion()
 
-        print("Datos leídos exitosamente.")
         return listaMonedas_DTO
 
-    def editar_cantidad(self, id_moneda, nueva_cantidad):
+    def calcular_ganancias_por_moneda(self):
         """
-        Actualiza la cantidad de una moneda específica en la base de datos.
-
-        :param id_moneda: ID de la moneda.
-        :param nueva_cantidad: Nueva cantidad disponible.
-        :return: True si la operación fue exitosa, False en caso contrario.
+        Consulta las ganancias totales en pesos por cada moneda.
         """
         self.conector.activarConexion()
-        sql = f"UPDATE moneda SET cantidad = {nueva_cantidad} WHERE id = {id_moneda}"
 
-        estado = self.conector.ejecutarUpdate(sql)
-        self.conector.desactivarConexion()
+        # Consulta SQL para calcular ganancias por moneda
+        sql = """
+            SELECT m.nombre, SUM(t.ganancia) AS ganancias
+            FROM transaccion t
+            JOIN moneda m ON t.moneda_id = m.id
+            GROUP BY m.nombre
+        """
+        estado, datos = self.conector.ejecutarSelectAll(sql)
+
+        listaGanancias_DTO = []
 
         if estado == 0:
-            print(f"Cantidad de la moneda con ID {id_moneda} actualizada a {nueva_cantidad}.")
-            return True
-        else:
-            print(f"Error al actualizar la cantidad de la moneda con ID {id_moneda}.")
-            return False
+            for fila in datos:
+                registro = {
+                    "nombre": fila[0],
+                    "ganancias": fila[1]
+                }
+                listaGanancias_DTO.append(registro)
+
+        self.conector.desactivarConexion()
+
+        return listaGanancias_DTO
